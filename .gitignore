@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 kaggle.json
 the-car-connection-picture-dataset/the-car-connection-picture-dataset.zip
+the-car-connection-picture-dataset
