@@ -1,3 +1,5 @@
+tqdm
 pandas
 opendatasets
-tensorflow
+tensorflow[and-cuda]
+flask
