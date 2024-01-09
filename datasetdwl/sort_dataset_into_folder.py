@@ -11,6 +11,7 @@ destination_folder = "sorted-dataset"
 if not os.path.exists(destination_folder):
     os.makedirs(destination_folder)
 
+
 def process_file(filename):
     # Split the filename into groups separated by underscores
     groups = filename.split("_")
@@ -29,6 +30,7 @@ def process_file(filename):
     
     # Move the picture to the subfolder
     shutil.copy(os.path.join(source_folder, filename), os.path.join(subfolder, filename))
+
 
 if __name__ == '__main__':
     # Get the number of available cores
