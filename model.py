@@ -10,6 +10,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
+######################SETUP###############################
+
+
 # '0': Display all logs (default behavior).
 # '1': Display only warning and error logs.
 # '2': Display only error logs.
@@ -20,6 +23,8 @@ img_height = 180
 img_width = 180
 
 data_dir="sorted-dataset"
+
+######################CREATE DATASET######################
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
   data_dir,
@@ -36,33 +41,31 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
   seed=123,
   image_size=(img_height, img_width),
   batch_size=batch_size)
-
 class_names = train_ds.class_names
 # print(class_names)
 
 
 
-# plt.figure(figsize=(10, 10))
-# for images, labels in train_ds.take(1):
-#   for i in range(9):
-#     ax = plt.subplot(3, 3, i + 1)
-#     plt.imshow(images[i].numpy().astype("uint8"))
-#     plt.title(class_names[labels[i]])
-#     plt.axis("off")
+######################NORMALIZE DATASET#########################
 
 AUTOTUNE = tf.data.AUTOTUNE
 
-train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
-val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
+# train_ds = train_ds.shuffle(1000).cache().prefetch(buffer_size=AUTOTUNE)
+# val_ds = val_ds.prefetch(buffer_size=AUTOTUNE).cache()
+# batch_size = 4
+# train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE).batch(batch_size)
+# val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE).batch(batch_size)
 
-normalization_layer = layers.Rescaling(1./255)
+# normalization_layer = layers.Rescaling(1./255)
 
-normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
-image_batch, labels_batch = next(iter(normalized_ds))
-first_image = image_batch[0]
+# normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
+# image_batch, labels_batch = next(iter(normalized_ds))
+# first_image = image_batch[0]
 # Notice the pixel values are now in `[0,1]`.
-print(np.min(first_image), np.max(first_image))
-print(labels_batch)
+# print(np.min(first_image), np.max(first_image))
+# print(labels_batch)
+
+######################CREATE MODEL#########################
 
 num_classes = len(class_names)
 
@@ -85,12 +88,17 @@ model.compile(optimizer='adam',
 
 model.summary()
 
+######################TRAIN MODEL#########################
+
 epochs=10
 history = model.fit(
   train_ds,
   validation_data=val_ds,
   epochs=epochs
 )
+
+
+######################PLOT MODEL#########################
 
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
@@ -99,6 +107,8 @@ loss = history.history['loss']
 val_loss = history.history['val_loss']
 
 epochs_range = range(epochs)
+
+
 
 plt.figure(figsize=(8, 8))
 plt.subplot(1, 2, 1)
@@ -112,5 +122,12 @@ plt.plot(epochs_range, loss, label='Training Loss')
 plt.plot(epochs_range, val_loss, label='Validation Loss')
 plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
+
 plt.show()
+
+######################SAVE MODEL#########################
+model_name = 'model_v1_car_classifier'
+plt.savefig(model_name+'.png')
+model.save(model_name)
+
 
