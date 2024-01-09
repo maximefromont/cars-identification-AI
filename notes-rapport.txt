@@ -1,0 +1,1 @@
+Note 1 - The multi-threading of the sort_dataset_into_folder.py script allowed to go from nearly 10 minutes to 2 minutes and 50 seconds on a weak laptop and from 16 seconds to 6 seconds on a powerful laptop.
