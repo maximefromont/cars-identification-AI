@@ -1,3 +1,4 @@
 pandas
 opendatasets
 tensorflow
+tensorflow[and-cuda]

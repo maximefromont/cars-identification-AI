@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+basicbrand_model_car_classifier_30, 0.9821421504020691, 0.06524236500263214, 0.5701543688774109, 8.84572982788086
