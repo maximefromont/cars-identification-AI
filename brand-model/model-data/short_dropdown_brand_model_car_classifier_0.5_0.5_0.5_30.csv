@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+short_dropdown_brand_model_car_classifier_0.5_0.5_0.5_30, 0.9711569547653198, 0.08611943572759628, 0.7280051708221436, 1.2753474712371826

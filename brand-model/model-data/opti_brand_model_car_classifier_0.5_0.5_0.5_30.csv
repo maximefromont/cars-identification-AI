@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+opti_brand_model_car_classifier_0.5_0.5_0.5_30, 0.07282739132642746, 3.4286601543426514, 0.0628247857093811, 3.42034649848938
