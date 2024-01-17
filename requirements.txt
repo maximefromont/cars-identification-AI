@@ -1,0 +1,8 @@
+tqdm
+pandas
+opendatasets
+tensorflow[and-cuda]
+tkinter
+customtkinter
+opencv-python
+pillow
