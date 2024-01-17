@@ -167,4 +167,8 @@ brand-model/model
 brand-dataset
 brand-model/model-data
 brand-model/plot
+car-dataset
+car-model/model-data
+car-model/plot
+car-model/model
 

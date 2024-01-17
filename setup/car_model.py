@@ -14,7 +14,7 @@ import os
 
 
 
-def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_rate_3=0.5,resolution=480,batch_size=32):
+def build_car_model(brand,epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_rate_3=0.5,resolution=480,batch_size=32):
 ######################SETUP###############################
 
   # '0': Display all logs (default behavior).
@@ -26,7 +26,7 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   img_height = resolution
   img_width = resolution
 
-  data_dir="brand-dataset"
+  data_dir="car-dataset/"+brand
 
   ######################CREATE DATASET######################
 
@@ -104,7 +104,7 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   epochs_range = range(epochs)
 
 
-  model_name = 'brand_model_car_classifier_'+str(dropout_rate_1)+'_'+str(dropout_rate_2)+'_'+str(dropout_rate_3)
+  model_name = brand+'_car_classifier_'+str(dropout_rate_1)+'_'+str(dropout_rate_2)+'_'+str(dropout_rate_3)
   plt.figure(figsize=(8, 8))
   plt.subplot(1, 2, 1)
   plt.plot(epochs_range, acc, label='Training Accuracy')
@@ -120,16 +120,15 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   plt.plot(epochs_range, val_loss, label='Validation Loss')
   plt.legend(loc='upper right')
   plt.title('Training and Validation Loss')
-  os.makedirs("brand-model/model-data", exist_ok=True)
-  os.makedirs("brand-model/plot", exist_ok=True)
-  plt.savefig('brand-model/plot/'+model_name+'_'+str(epochs)+'.png')
+  os.makedirs("car-model/plot", exist_ok=True)
+  plt.savefig('car-model/plot/'+model_name+'_'+str(epochs)+'.png')
 
   ######################SAVE MODEL#########################
-  os.makedirs("brand-model/model", exist_ok=True)
-  model.save('brand-model/model/'+model_name+'_'+str(epochs)+'.h5')
+  os.makedirs("car-model/model", exist_ok=True)
+  model.save('car-model/model/'+model_name+'_'+str(epochs)+'.h5')
   #save the model data to a csv file with data model name and last value of  accuracy, loss, validation accuracy, validation loss
   # Create the "model-data" directory if it doesn't exist
-  os.makedirs("brand-model/model-data", exist_ok=True)
+  os.makedirs("car-model/model-data", exist_ok=True)
 
   # Get the last values of accuracy, loss, validation accuracy, and validation loss
   last_acc = acc[-1]
@@ -138,9 +137,6 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   last_val_loss = val_loss[-1]
 
   # Save the model data to a csv file
-  with open('brand-model/model-data/'+model_name+'_'+str(epochs)+'.csv', 'w') as f:
+  with open('car-model/model-data/'+model_name+'_'+str(epochs)+'.csv', 'w') as f:
     f.write('model_name, accuracy, loss, val_accuracy, val_loss\n')
     f.write(model_name+'_'+str(epochs)+', '+str(last_acc)+', '+str(last_loss)+', '+str(last_val_acc)+', '+str(last_val_loss))
-
-
-
