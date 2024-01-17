@@ -1,3 +1,4 @@
+import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
@@ -46,7 +47,9 @@ def build_car_model(brand,epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropou
     image_size=(img_height, img_width),
     batch_size=batch_size)
   class_names = train_ds.class_names
-  # print(class_names)
+  with open(str(brand)+'_car_names.pkl', 'wb') as f:
+    pickle.dump(class_names, f)
+  
 
 
   ######################CREATE MODEL#########################

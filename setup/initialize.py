@@ -3,11 +3,18 @@ import sort_dataset_into_brand
 import sort_dataset_into_car
 import brand_model
 import car_model
+import pickle
 
 
 data_brand = pd.read_csv('data-stats/stat-brand-sorted-dataset.csv')
 data_car = pd.read_csv('data-stats/stat-sorted-dataset.csv')
 model_car_brand = ['Nissan','Ford','BMW','Mercedes-Benz']
+epochs = 30
+resolution = 224
+with open('resolution.pkl', 'wb') as f:
+    pickle.dump(resolution, f)
+
+
 
 
 
@@ -51,7 +58,7 @@ while choice:
 sort_dataset_into_brand.sort_dataset_into_brand(model_car_brand)
 
 ###################################BUILD THE BRAND MODEL#############################################
-brand_model.build_brand_model(epochs=10,resolution=180)
+brand_model.build_brand_model(epochs=epochs,resolution=resolution)
 
 ###################################FILTER THE DATASET BY CAR#############################################
 #loop in the data_car and print the first col
@@ -78,7 +85,7 @@ sort_dataset_into_car.sort_dataset_into_car(model_car_brand,brand_car)
 ###################################BUILD THE CATEGORY MODEL#############################################
 
 for i in range(len(model_car_brand)):
-    car_model.build_car_model(model_car_brand[i],epochs=10,resolution=180)
+    car_model.build_car_model(model_car_brand[i],epochs=epochs,resolution=resolution)
 
 
 

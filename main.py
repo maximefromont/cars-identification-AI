@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import customtkinter as ctk
 from tkinter import filedialog
 import numpy as np
+import car_classifier
 
 
 class PhotoApp(ctk.CTkFrame):
@@ -33,8 +34,8 @@ class PhotoApp(ctk.CTkFrame):
                     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                     image = Image.fromarray(image)
                     self.display_image(image)
-                    # Mettre ici l'appel vers l'IA
-                    self.resultAI.configure(text=f"Chemin du fichier : {file_path}") # Mettre ici le texte avec le résultat de l'IA
+                    brand,brand_score,car,car_score = car_classifier.car_classifier(file_path)
+                    self.resultAI.configure(text=f"This car is a {car}({round(100 * np.max(car_score), 2)}%) from the brand : {brand}({round(100 * np.max(brand_score), 2)}%)") # Mettre ici le texte avec le résultat de l'IA
                     self.canvas.pack(fill=ctk.BOTH, expand=True)
                 else:
                     self.resultAI.configure(text="Erreur : Impossible de lire l'image") # Default en cas de problème

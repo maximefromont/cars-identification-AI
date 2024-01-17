@@ -1,23 +1,28 @@
 import os
-import shutil
+import glob
 
-def delete_files(file_paths):
-    for file_path in file_paths:
+def delete_files(paths):
+    for path in paths:
         try:
-            if os.path.exists(file_path):
-                if os.path.isfile(file_path):
-                    os.remove(file_path)
-                    print(f"File deleted: {file_path}")
-                else:
-                    shutil.rmtree(file_path)
-                    print(f"Directory deleted: {file_path}")
+            # If path is a directory, delete all .pkl files in it
+            if os.path.isdir(path):
+                pkl_files = glob.glob(os.path.join(path, '*.pkl'))
+                for file in pkl_files:
+                    print('here')
+                    print(f"Deleting file: {file}")
+                    os.remove(file)
+            # If path is a file, delete it
+            elif os.path.isfile(path):
+                print(f"Deleting file: {path}")
+                os.remove(path)
             else:
-                print(f"File or directory not found: {file_path}")
+                print(f"File or directory not found: {path}")
         except Exception as e:
-            print(f"Error deleting {file_path}: {e}")
+            print(f"Error deleting {path}: {e}")
 
 # List of file paths to delete
-files_to_delete = [
+files_to_delete = [  
+    '.',  
     'brand-dataset',
     'car-dataset',
     'car-model/plot',
@@ -26,7 +31,7 @@ files_to_delete = [
     'brand-model/plot',
     'brand-model/model',
     'brand-model/model-data',
-    'the-car-connection-picture-dataset'
+    'the-car-connection-picture-dataset',
 ]
 
 # Specify the root directory

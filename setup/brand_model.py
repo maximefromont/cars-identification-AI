@@ -4,6 +4,7 @@ import PIL
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import os
+import pickle
 
 
 from tensorflow import keras
@@ -46,7 +47,9 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
     image_size=(img_height, img_width),
     batch_size=batch_size)
   class_names = train_ds.class_names
-  # print(class_names)
+  with open('brands_names.pkl', 'wb') as f:
+    pickle.dump(class_names, f)
+  
 
 
   ######################CREATE MODEL#########################
