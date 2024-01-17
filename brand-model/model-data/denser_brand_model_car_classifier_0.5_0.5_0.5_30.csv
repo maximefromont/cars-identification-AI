@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+denser_brand_model_car_classifier_0.5_0.5_0.5_30, 0.4462519884109497, 1.9955717325210571, 0.1852167844772339, 3.0341382026672363

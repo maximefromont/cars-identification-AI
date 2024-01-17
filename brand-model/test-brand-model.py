@@ -16,11 +16,11 @@ import os
 # '2': Display only error logs.
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-model = load_model('brand_model_v1_car_classifier.h5')
+model = load_model('brand-model/model/short_dropdown_brand_model_car_classifier_0.5_0.5_0.5_30.h5')
 batch_size = 32
 img_height = 180
 img_width = 180
-class_directory = "brand-sorted-dataset"
+class_directory = "short-brand-sorted-dataset"
 class_names= sorted([d for d in os.listdir(class_directory) if os.path.isdir(os.path.join(class_directory, d))])
 test_image_directory = "test-dataset"
 test_image_name = sorted([d for d in os.listdir(test_image_directory) if os.path.isfile(os.path.join(test_image_directory, d))])
