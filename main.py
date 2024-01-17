@@ -34,7 +34,7 @@ class PhotoApp(ctk.CTkFrame):
                     image = Image.fromarray(image)
                     self.display_image(image)
                     # Mettre ici l'appel vers l'IA
-                    self.resultAI.configure(text="Chemin du fichier : " + file_path) # Mettre ici le texte avec le résultat de l'IA
+                    self.resultAI.configure(text=f"Chemin du fichier : {file_path}") # Mettre ici le texte avec le résultat de l'IA
                     self.canvas.pack(fill=ctk.BOTH, expand=True)
                 else:
                     self.resultAI.configure(text="Erreur : Impossible de lire l'image") # Default en cas de problème
