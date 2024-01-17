@@ -164,4 +164,7 @@ the-car-connection-picture-dataset
 sorted-dataset
 brand-sorted-dataset
 brand-model/model
+brand-dataset
+brand-model/model-data
+brand-model/plot
 

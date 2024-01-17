@@ -1,2 +1,0 @@
-model_name, accuracy, loss, val_accuracy, val_loss
-CNN_brand_model_car_classifier_10, 0.28424105048179626, 1.3787665367126465, 0.2861746549606323, 1.3767967224121094

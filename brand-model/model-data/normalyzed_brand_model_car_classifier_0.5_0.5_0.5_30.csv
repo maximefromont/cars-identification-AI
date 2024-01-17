@@ -1,2 +1,0 @@
-model_name, accuracy, loss, val_accuracy, val_loss
-normalyzed_brand_model_car_classifier_0.5_0.5_0.5_30, 0.0783146545290947, 3.4049203395843506, 0.0731404647231102, 3.5476748943328857
