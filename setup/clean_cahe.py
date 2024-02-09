@@ -1,5 +1,6 @@
 import os
 import glob
+import shutil
 
 def delete_files(paths):
     for path in paths:
@@ -11,6 +12,10 @@ def delete_files(paths):
                     print('here')
                     print(f"Deleting file: {file}")
                     os.remove(file)
+                print(path)   
+                if path != './.':
+                    print(f"Deleting directory: {path}")
+                    shutil.rmtree(path)                    
             # If path is a file, delete it
             elif os.path.isfile(path):
                 print(f"Deleting file: {path}")
@@ -28,10 +33,14 @@ files_to_delete = [
     'car-model/plot',
     'car-model/model',
     'car-model/model-data',
+    'car-model',
     'brand-model/plot',
     'brand-model/model',
     'brand-model/model-data',
+    'brand-model',
     'the-car-connection-picture-dataset',
+    'complete-brand-model',
+    'complete-car-model'
 ]
 
 # Specify the root directory
@@ -42,8 +51,3 @@ full_paths = [os.path.join(root_directory, path) for path in files_to_delete]
 
 # Delete files
 delete_files(full_paths)
-
-
-
-
-
