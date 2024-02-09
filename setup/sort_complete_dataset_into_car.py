@@ -61,3 +61,8 @@ def sort_complete_dataset_into_car():
         for _ in pool.imap_unordered(process_file_with_brands, os.listdir(source_folder)):
             pbar.update(1)
 
+
+if __name__ == "__main__":
+    sort_complete_dataset_into_car()
+    print("Done")
+
