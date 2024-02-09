@@ -42,3 +42,8 @@ def sort_complete_dataset():
         for _ in pool.imap_unordered(process_file, os.listdir(source_folder)):
             pbar.update(1)
 
+
+if __name__ == "__main__":
+    sort_complete_dataset()
+    print("The dataset has been sorted successfully!")
+
