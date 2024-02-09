@@ -9,7 +9,7 @@ import pickle
 data_brand = pd.read_csv('data-stats/stat-brand-sorted-dataset.csv')
 data_car = pd.read_csv('data-stats/stat-sorted-dataset.csv')
 model_car_brand = ['Nissan','Ford','BMW','Mercedes-Benz']
-epochs = 30
+epochs = 2
 resolution = 224
 with open('resolution.pkl', 'wb') as f:
     pickle.dump(resolution, f)
@@ -20,6 +20,13 @@ with open('resolution.pkl', 'wb') as f:
 
 ###################################GET THE DATASET#############################################
 import get_dataset_from_kaggle
+import sort_complete_dataset_into_car
+import sort_complete_dataset_into_brand
+import sort_complete_dataset
+sort_complete_dataset_into_car.sort_complete_dataset_into_car()
+sort_complete_dataset_into_brand.sort_complete_dataset_into_brand()
+sort_complete_dataset.sort_complete_dataset()
+
 ###################################FILTER THE DATASET BY BRAND#############################################
 
 choice = True

@@ -39,7 +39,9 @@ files_to_delete = [
     'brand-model/model-data',
     'brand-model',
     'the-car-connection-picture-dataset',
-]
+    'sorted-dataset',
+    'complete-brand-dataset',
+    'complete-car-dataset',]
 
 # Specify the root directory
 root_directory = "."
