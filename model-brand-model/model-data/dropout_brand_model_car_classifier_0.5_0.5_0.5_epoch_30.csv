@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+dropout_brand_model_car_classifier_0.5_0.5_0.5_epoch_30_30, 0.19752201437950134, 3.8243725299835205, 0.184208482503891, 4.122230529785156

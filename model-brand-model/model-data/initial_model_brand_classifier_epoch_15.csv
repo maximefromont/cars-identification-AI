@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+initial_model_brand_classifier_epoch_15_15, 0.7169309854507446, 1.126833438873291, 0.43636080622673035, 6.5513505935668945

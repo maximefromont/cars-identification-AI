@@ -1,0 +1,2 @@
+model_name, accuracy, loss, val_accuracy, val_loss
+brand_model_car_classifier_with_data_augmenation_0.5_0.5_0.5_epoch_30_30, 0.04866793379187584, 4.872661590576172, 0.026603583246469498, 5.200791358947754

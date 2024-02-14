@@ -65,7 +65,7 @@ while choice:
 sort_dataset_into_brand.sort_dataset_into_brand(model_car_brand)
 
 ###################################BUILD THE BRAND MODEL#############################################
-brand_model.build_brand_model(epochs=epochs,resolution=resolution)
+#brand_model.build_brand_model(epochs=epochs,resolution=resolution)
 
 ###################################FILTER THE DATASET BY CAR#############################################
 #loop in the data_car and print the first col
@@ -91,8 +91,8 @@ for i in range(len(brand_car)):
 sort_dataset_into_car.sort_dataset_into_car(model_car_brand,brand_car)   
 ###################################BUILD THE CATEGORY MODEL#############################################
 
-for i in range(len(model_car_brand)):
-    car_model.build_car_model(model_car_brand[i],epochs=epochs,resolution=resolution)
+# for i in range(len(model_car_brand)):
+#     car_model.build_car_model(model_car_brand[i],epochs=epochs,resolution=resolution)
 
 
 

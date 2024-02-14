@@ -170,10 +170,13 @@ def build_dropout_brand_model_model(epochs,data_dir='sorted-dataset', dropout_ra
   layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
   layers.Conv2D(16, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_1),
   layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_2),
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_3),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
   layers.Dense(num_classes)
@@ -289,10 +292,13 @@ def build_data_augmented_brand_model_model(epochs,data_dir='sorted-dataset', dro
   layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
   layers.Conv2D(16, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_1),
   layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_2),
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
+  layers.Dropout(dropout_rate_3),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
   layers.Dense(num_classes)
@@ -363,13 +369,13 @@ def build_data_augmented_brand_model_model(epochs,data_dir='sorted-dataset', dro
     f.write(model_name+'_'+str(epochs)+', '+str(last_acc)+', '+str(last_loss)+', '+str(last_val_acc)+', '+str(last_val_loss))
 
 if __name__ == "__main__":
-    build_initial_brand_model_model(10)
-    build_initial_brand_model_model(20)
-    build_initial_brand_model_model(30)
-    build_initial_brand_model_model(60)
-    build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.3, dropout_rate_2=0.3, dropout_rate_3=0.3)
-    build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_rate_3=0.5)
-    build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.7, dropout_rate_2=0.7, dropout_rate_3=0.7)
-    build_data_augmented_brand_model_model(epochs=10,dropout_rate_1=0.3, dropout_rate_2=0.3, dropout_rate_3=0.3)
-    build_data_augmented_brand_model_model(epochs=20,dropout_rate_1=0.3, dropout_rate_2=0.3, dropout_rate_3=0.3)
+    # build_initial_brand_model_model(10)
+    # build_initial_brand_model_model(15)
+    # build_initial_brand_model_model(20)
+    # build_initial_brand_model_model(25)
+    # build_initial_brand_model_model(30)
+    # build_initial_brand_model_model(60)
+    # build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.3, dropout_rate_2=0.3, dropout_rate_3=0.3)
+    # build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_rate_3=0.5)
+    # build_dropout_brand_model_model(epochs=30,dropout_rate_1=0.7, dropout_rate_2=0.7, dropout_rate_3=0.7)
     build_data_augmented_brand_model_model(epochs=30,dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_rate_3=0.5)
