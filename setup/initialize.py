@@ -8,9 +8,10 @@ import pickle
 
 data_brand = pd.read_csv('data-stats/stat-brand-sorted-dataset.csv')
 data_car = pd.read_csv('data-stats/stat-sorted-dataset.csv')
-model_car_brand = ['Nissan','Ford','BMW','Mercedes-Benz']
-epochs = 30
-resolution = 224
+model_car_brand = ['Nissan','Ford','BMW','Audi']
+epochs_brand = 15
+epochs_car = 20
+resolution = 480
 with open('resolution.pkl', 'wb') as f:
     pickle.dump(resolution, f)
 
@@ -34,8 +35,7 @@ while choice:
     if choice == "1":
         print("You need to select a brands to build your model")
         print("Try to use brand with a similar number of picture to have a better model")
-    elif choice == "2":
-        #print only the the second col of the data_brand dataframe
+    elif choice == "2":       
         print(data_brand.iloc[:,0])
       
     elif choice == "3":
@@ -43,7 +43,6 @@ while choice:
         model_car_brand = ['Nissan','Ford','BMW','Mercedes-Benz']
         choice = False
     else:
-        #test if the input is in the dataframe
         if choice in data_brand.iloc[:,0].values:
             print("brand selected")
             model_car_brand[brand_nbr] = choice    
@@ -58,7 +57,7 @@ while choice:
 sort_dataset_into_brand.sort_dataset_into_brand(model_car_brand)
 
 ###################################BUILD THE BRAND MODEL#############################################
-brand_model.build_brand_model(epochs=epochs,resolution=resolution)
+brand_model.build_brand_model(epochs=epochs_brand,resolution=resolution)
 
 ###################################FILTER THE DATASET BY CAR#############################################
 #loop in the data_car and print the first col
@@ -85,15 +84,5 @@ sort_dataset_into_car.sort_dataset_into_car(model_car_brand,brand_car)
 ###################################BUILD THE CATEGORY MODEL#############################################
 
 for i in range(len(model_car_brand)):
-    car_model.build_car_model(model_car_brand[i],epochs=epochs,resolution=resolution)
+    car_model.build_car_model(model_car_brand[i],epochs=epochs_car,resolution=resolution)
 
-
-
-
-
-
-
-
-###################################PRNT AI MODEL CARACTERISTIC#############################################
-
-###################################TEST THE MODELS#############################################
