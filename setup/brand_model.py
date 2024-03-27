@@ -59,7 +59,7 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   model = Sequential([    
 
 
-  layers.Rescaling(1./255),
+    layers.Rescaling(1./255),
 
   layers.Conv2D(16, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
@@ -72,6 +72,12 @@ def build_brand_model(epochs, dropout_rate_1=0.5, dropout_rate_2=0.5, dropout_ra
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Dropout(dropout_rate_1),
+
+  layers.Flatten(),
+  layers.Dense(32, activation='relu'),
+
+  layers.Flatten(),
+  layers.Dense(64, activation='relu'),
   
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
